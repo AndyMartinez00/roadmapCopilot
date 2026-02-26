@@ -2,3 +2,4 @@
 --al generar esto pip install -r requirements.txt es global osolo endentro del proyecto
 ---use le metodo Opción 1: Usando venv como valido si esta activo o inactivo
 --como puedo agrgarle swagger a esta api y como puedo probarla?
+--necesito agregarle una prueba a esta API como lo hago ?

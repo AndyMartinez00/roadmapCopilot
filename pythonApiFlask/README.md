@@ -151,12 +151,80 @@ Si deseas ver la especificación OpenAPI en formato JSON:
 GET http://localhost:5000/swagger.json
 ```
 
+## Pruebas Unitarias
+
+La API incluye pruebas automatizadas usando **pytest**. Las pruebas verifican que todos los endpoints funcionen correctamente.
+
+### Archivo de Pruebas
+
+Todas las pruebas están en [test_app.py](test_app.py) e incluyen:
+
+- ✅ Pruebas con parámetro
+- ✅ Pruebas sin parámetro
+- ✅ Pruebas con caracteres especiales
+- ✅ Verificación de tipos de contenido
+- ✅ Pruebas de endpoints inexistentes
+- ✅ Verificación de métodos HTTP
+
+### Cómo Ejecutar las Pruebas
+
+**Opción 1: Desde PowerShell o CMD (más sencillo)**
+
+```powershell
+pytest
+```
+
+**Opción 2: Con más verbosidad (ver detalles)**
+
+```powershell
+pytest -v
+```
+
+**Opción 3: Ver cobertura de código**
+
+```powershell
+pytest --cov=app test_app.py
+```
+
+**Opción 4: Ejecutar una prueba específica**
+
+```powershell
+pytest test_app.py::TestApiEndpoints::test_api_saludar_con_parametro -v
+```
+
+### Ejemplos de Salida
+
+Cuando ejecutas `pytest -v`, verás algo como esto:
+
+```
+test_app.py::TestApiEndpoints::test_api_saludar_con_parametro PASSED
+test_app.py::TestApiEndpoints::test_api_saludar_sin_parametro PASSED
+test_app.py::TestApiEndpoints::test_api_saludar_con_espacios PASSED
+test_app.py::TestApiEndpoints::test_api_concatenar_con_parametro PASSED
+test_app.py::TestApiEndpoints::test_api_concatenar_sin_parametro PASSED
+test_app.py::TestApiEndpoints::test_api_concatenar_con_caracteres_especiales PASSED
+test_app.py::TestApiEndpoints::test_api_content_type PASSED
+test_app.py::TestApiEndpoints::test_api_endpoint_no_existe PASSED
+test_app.py::TestApiEndpoints::test_api_solo_acepta_get PASSED
+
+======================== 9 passed in 0.23s ========================
+```
+
+### Antes de Ejecutar Pruebas
+
+Asegúrate de haber instalado las dependencias:
+
+```powershell
+pip install -r requirements.txt
+```
+
 ## Estructura del Proyecto
 
 ```
 pythonApiFlask/
 ├── app.py                 # Aplicación Flask con Swagger
-├── requirements.txt       # Dependencias (incluye flasgger)
+├── test_app.py           # Pruebas unitarias con pytest
+├── requirements.txt       # Dependencias (incluye flasgger y pytest)
 ├── run.ps1               # Script para PowerShell
 ├── run.bat               # Script para CMD
 └── README.md             # Este archivo
