@@ -1,0 +1,2 @@
+--crear un API utilizando Flask que cuente con un metodo get que unicamente agregue la cadena "Hola" + cadenadeentrada +" desde la aPI de Python"
+--al generar esto pip install -r requirements.txt es global osolo endentro del proyecto
