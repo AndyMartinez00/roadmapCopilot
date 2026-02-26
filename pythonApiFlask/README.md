@@ -119,12 +119,44 @@ Para salir del entorno virtual:
 deactivate
 ```
 
+## Swagger - Documentación Interactiva
+
+La API incluye **Swagger** para documentación interactiva. Una vez que ejecutes la aplicación, puedes acceder a la interfaz Swagger en:
+
+### Acceso a Swagger UI
+
+**URL:** `http://localhost:5000/apidocs/`
+
+Aquí puedes:
+
+- ✅ Ver toda la documentación de los endpoints
+- ✅ Probar los endpoints directamente desde el navegador
+- ✅ Ver los parámetros requeridos
+- ✅ Ver las respuestas esperadas
+
+### Cómo Probar un Endpoint en Swagger
+
+1. **Abre** `http://localhost:5000/apidocs/`
+2. **Haz clic** en el endpoint que deseas probar (ej: `/api`)
+3. **Haz clic** en "Try it out"
+4. **Ingresa** el valor para el parámetro (ej: `mensaje=Python`)
+5. **Haz clic** en "Execute"
+6. **Ve** la respuesta en la sección "Response"
+
+### Alternativa: Swagger JSON
+
+Si deseas ver la especificación OpenAPI en formato JSON:
+
+```
+GET http://localhost:5000/swagger.json
+```
+
 ## Estructura del Proyecto
 
 ```
 pythonApiFlask/
-├── app.py                 # Aplicación Flask
-├── requirements.txt       # Dependencias
+├── app.py                 # Aplicación Flask con Swagger
+├── requirements.txt       # Dependencias (incluye flasgger)
 ├── run.ps1               # Script para PowerShell
 ├── run.bat               # Script para CMD
 └── README.md             # Este archivo

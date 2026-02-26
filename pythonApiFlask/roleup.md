@@ -1,2 +1,4 @@
 --crear un API utilizando Flask que cuente con un metodo get que unicamente agregue la cadena "Hola" + cadenadeentrada +" desde la aPI de Python"
 --al generar esto pip install -r requirements.txt es global osolo endentro del proyecto
+---use le metodo Opción 1: Usando venv como valido si esta activo o inactivo
+--como puedo agrgarle swagger a esta api y como puedo probarla?
