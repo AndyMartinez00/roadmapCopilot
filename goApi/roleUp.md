@@ -151,3 +151,19 @@ Tu API en Go ya está funcionando.
 # instalando Gorilla Mux es un router avanzado para Go que permite:
 
 go get -u github.com/gorilla/mux
+
+# para puertos bloqueado
+
+@AM1000897GT ➜ goApi git(main)  netstat -ano | findstr :8080
+TCP 0.0.0.0:8080 0.0.0.0:0 LISTENING 39036
+TCP [::]:8080 [::]:0 LISTENING 39036
+@AM1000897GT ➜ goApi git(main) taskkill /f /pid 39036
+Correcto: se terminó el proceso con PID 39036.
+
+# usando curl
+
+curl http://localhost:8080/
+curl http://localhost:8080/api/health
+curl -X GET http://localhost:8080/api/users
+curl -X POST http://localhost:8080/api/users -H "Content-Type: application/json" -d '{"id":4,name":"Pedro"}'
+curl -i http://localhost:8080/api/users
