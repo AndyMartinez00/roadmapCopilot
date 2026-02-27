@@ -21,6 +21,8 @@ param (
     [string]$TestName
 )
 
+$ErrorActionPreference = "Stop"
+
 if (-not $TestName) {
     $TestName = "$AppName.Tests"
 }
@@ -30,6 +32,12 @@ $SolutionName = "$AppName.sln"
 Write-Host "📦 Creando solución..."
 dotnet new sln -n $AppName
 
+# Validar que la solución exista
+if (-not (Test-Path $SolutionName)) {
+    Write-Host "❌ No se creó la solución correctamente."
+    exit 1
+}
+
 Write-Host "🚀 Creando proyecto Minimal API..."
 dotnet new web -n $AppName
 
@@ -37,8 +45,9 @@ Write-Host "🧪 Creando proyecto de pruebas ($TestName)..."
 dotnet new xunit -n $TestName
 
 Write-Host "🔗 Agregando proyectos a la solución..."
-dotnet sln $SolutionName add "$AppName\$AppName.csproj"
-dotnet sln $SolutionName add "$TestName\$TestName.csproj"
+dotnet sln add "$AppName\$AppName.csproj"
+dotnet sln add "$TestName\$TestName.csproj"
+
 
 Write-Host "🔗 Asociando proyecto de pruebas con API..."
 dotnet add "$TestName\$TestName.csproj" reference "$AppName\$AppName.csproj"
