@@ -114,3 +114,16 @@ Bash (.sh) PowerShell (.ps1)
 Linux / WSL Windows nativo
 chmod +x Set-ExecutionPolicy
 $1 -ParameterName
+
+--paara crear pullrequest
+@AM1000897GT ➜ bashNetApi git(main) git checkout -b Branch testPullRequest
+--ver rama creada
+@AM1000897GT ➜ bashNetApi git(main) git branch
+main
+
+- testPullRequest
+  --Prepara los archivos:
+  @AM1000897GT ➜ bashNetApi git(testPullRequest) git add .
+  @AM1000897GT ➜ bashNetApi git(testPullRequest) git add roleUpPw.md
+  --relizar commit
+  @AM1000897GT ➜ bashNetApi git(testPullRequest) git commit -m "rama para pullRequesTest"
