@@ -5,7 +5,7 @@ Descripción:
     Genera estructura profesional:
     - Minimal API .NET
     - Proyecto de pruebas (xUnit)
-    - Solución (.sln)
+    - Solución (.sln o .slnx según versión .NET)
     - Referencias
     - Paquetes
     - Dockerfile
@@ -27,14 +27,18 @@ if (-not $TestName) {
     $TestName = "$AppName.Tests"
 }
 
-$SolutionName = "$AppName.sln"
-
 Write-Host "📦 Creando solución..."
 dotnet new sln -n $AppName
 
-# Validar que la solución exista
-if (-not (Test-Path $SolutionName)) {
-    Write-Host "❌ No se creó la solución correctamente."
+# Detectar automáticamente si se creó .sln o .slnx
+if (Test-Path "$AppName.sln") {
+    $SolutionName = "$AppName.sln"
+}
+elseif (Test-Path "$AppName.slnx") {
+    $SolutionName = "$AppName.slnx"
+}
+else {
+    Write-Host "❌ No se encontró archivo de solución (.sln o .slnx)."
     exit 1
 }
 
@@ -44,10 +48,9 @@ dotnet new web -n $AppName
 Write-Host "🧪 Creando proyecto de pruebas ($TestName)..."
 dotnet new xunit -n $TestName
 
-Write-Host "🔗 Agregando proyectos a la solución..."
-dotnet sln add "$AppName\$AppName.csproj"
-dotnet sln add "$TestName\$TestName.csproj"
-
+Write-Host "🔗 Agregando proyectos a la solución ($SolutionName)..."
+dotnet sln $SolutionName add "$AppName\$AppName.csproj"
+dotnet sln $SolutionName add "$TestName\$TestName.csproj"
 
 Write-Host "🔗 Asociando proyecto de pruebas con API..."
 dotnet add "$TestName\$TestName.csproj" reference "$AppName\$AppName.csproj"
@@ -62,7 +65,7 @@ Write-Host "🐳 Creando Dockerfile..."
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
 
-COPY *.sln .
+COPY *.sln* .
 COPY $AppName/*.csproj $AppName/
 RUN dotnet restore
 
