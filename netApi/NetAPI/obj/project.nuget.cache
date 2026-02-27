@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "BKt9l/DCuXg=",
+  "success": true,
+  "projectFilePath": "D:\\content\\vpn\\platzi\\copilot\\roadmapCopilot\\netApi\\NetAPI\\NetAPI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\AM1000897GT\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.3\\microsoft.aspnetcore.openapi.10.0.3.nupkg.sha512",
+    "C:\\Users\\AM1000897GT\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
