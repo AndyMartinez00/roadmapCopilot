@@ -147,3 +147,7 @@ Puedes mejorar esta API agregando:
 
 Listo ✅
 Tu API en Go ya está funcionando.
+
+# instalando Gorilla Mux es un router avanzado para Go que permite:
+
+go get -u github.com/gorilla/mux
