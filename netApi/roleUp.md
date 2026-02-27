@@ -121,7 +121,7 @@ dotnet run
 Salida esperada:
 
 ```
-Now listening on: https://localhost:5001
+Now listening on: http://localhost:5062/weatherforecast
 ```
 
 Abrir en el navegador:
